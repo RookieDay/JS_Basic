@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 280px;
+            height: 190px;
+            margin: 200px auto;
+            border: 1px solid #d2e1f1;
+        }
+        
+        .h3 {
+            height: 26px;
+            padding-left: 10px;
+            font: 400 16px/26px "microsoft yahei";
+            color: #a8b9ff;
+        }
+        
+        .others {
+            height: 50px;
+            margin-left: 15px;
+            padding-left: 60px;
+        }
+        
+        .others {
+            height: 50px;
+            margin-left: 15px;
+            padding-left: 60px;
+            background: url(images/xingzuo.png) no-repeat;
+            font-size: 12px;
+        }
+        
+        #sp1 {
+            display: inline-block;
+            width: 80px;
+            height: 13px;
+            margin: 2px 0;
+            background: url(images/star.png) no-repeat;
+        }
+        
+        #sp2 {
+            display: inline-block;
+            height: 13px;
+            background: url(images/star.png) no-repeat left bottom;
+        }
+        
+        .content {
+            margin: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h3>
+            星座运势
+        </h3>
+        <div class="others" id="others">
+            <select name="" id="sel">
+                <option value="0">白羊座(03.21-04.19)</option>
+                <option value="1">金牛座(04.20-05.20)</option>
+                <option value="2">双子座(05.21-06.21)</option>
+                <option value="3">巨蟹座(06.22-07.22)</option>
+                <option value="4">狮子座(07.23-08.22)</option>
+                <option value="5">处女座(08.23-09.22)</option>
+                <option value="6">天秤座(09.23-10.23)</option>
+                <option value="7">天蝎座(10.24-11.22)</option>
+                <option value="8">射手座(11.23-12.21)</option>
+                <option value="9">摩羯座(12.22-01.19)</option>
+                <option value="10">水瓶座(01.20-02.18)</option>
+                <option value="11">双鱼座(02.19-03.20)</option>
+            </select>
+            <br> 今日运势：
+            <span id="sp1"><span id="sp2"></span></span>
+        </div>
+        <div class="content" id="content">
+            今天你非常渴望表现自己，无论是在家里还是职场上都渴望有一定的话语权，不得不挺身而出，认真考...[详细]
+        </div>
+    </div>
+
+    <script>
+        //需求：select标签的value值一改变，星座图片和星星和文字都要一起改变。
+        //步骤：
+        //1.获取事件源
+        //2.绑定事件
+        //3.书写事件驱动程序
+        //(1).select一改变，图片和星星和文字一起改变
+
+
+        //1.获取事件源和图片星星文字
+        var sel = document.getElementById("sel");
+        var others = document.getElementById("others");
+        var sp2 = document.getElementById("sp2");
+        var content = document.getElementById("content");
+
+        var arrContent = ["今天你非常渴望表现自己，无论是在家里还是职场上都渴望有一定的话语权，不得不挺身而出，认真考...[详细]",
+            "你的感情逐渐公布于众，有些人可能开始要见长辈。而你前期积累的人脉对你的事业帮助也将越来越大...[详细]",
+            "c今天的你在工作场合表现十分强势，也渴望赚更多快钱，显得急功近利。也是你用心思考，努力创作的...[详细]"
+        ];
+        var arrSpan = [3, 6, 9];
+
+        sp2.style.width = (arrSpan[0] * 8) + "px";
+        //2.绑定事件
+        sel.onchange = function() {
+            //3.书写事件驱动程序
+            //(1).select一改变，图片和星星和文字一起改变
+            others.style.backgroundPosition = "0 -" + (this.value * 50) + "px";
+            sp2.style.width = (arrSpan[this.value] * 8) + "px";
+            content.innerHTML = arrContent[this.value];
+        }
+    </script>
+
+</body>
+
+</html>
