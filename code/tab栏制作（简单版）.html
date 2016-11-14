@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 300px;
+            height: 270px;
+            margin: 50px auto;
+            /*overflow: hidden;*/
+        }
+        ul {
+            list-style: none;
+            width: 330px;
+            height: 30px;
+            /*overflow: hidden;*/
+        }
+        ul li {
+            float: left;
+            width: 60px;
+            height: 30px;
+            font: 400 20px/30px "simsun";
+            background-color: #ccc;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .div1 div {
+            height: 240px;
+            background-color: pink;
+            display: none;
+        }
+        .div1 .show {
+            display: block;
+        }
+        .current {
+            background-color: pink;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <ul id="ul1">
+        <li class="current">男装</li>
+        <li>女装</li>
+        <li>童装</li>
+        <li>孕装</li>
+        <li>便装</li>
+    </ul>
+    <div id="div1" class="div1">7
+        <div class="show">我是男装内容区</div>
+        <div>我是女装内容区</div>
+        <div>我是童装内容区</div>
+        <div>我是孕装内容区</div>
+        <div>我是便装内容区</div>
+    </div>
+</div>
+
+<script>
+    //需求：鼠标放到li上，li要变色，而且内容应该显示相应得到区域。
+            //技术点：随着完成代码的间接性，代码的复杂程度逐步提高。
+    //步骤
+    //1.获取事件源
+    //2.绑定事件
+    //3.书写事件驱动程序
+        //(1).利用排他思想，让li变色。
+
+
+
+    //1.获取事件源
+    var div1 = document.getElementById("div1");
+    var ul1 = document.getElementById("ul1");
+    var arrLi = ul1.getElementsByTagName("li");
+    var arrDiv = div1.getElementsByTagName("div");
+
+    for(var i=0;i<arrLi.length;i++){
+        //2.绑定事件
+        //绑定盒子的索引值
+        arrLi[i].aaa = i;
+
+        arrLi[i].onmouseover = function () {
+            //得到了盒子的索引值
+//            alert(this.aaa);
+
+            //3.书写事件驱动程序
+                //(1).利用排他思想，让li变色。
+            for(var j=0;j<arrLi.length;j++){
+                arrLi[j].className = "";
+                arrDiv[j].className = "";
+            }
+
+            this.className = "current";
+            arrDiv[this.aaa].className = "show";
+        }
+    }
+
+
+
+</script>
+
+
+</body>
+</html>

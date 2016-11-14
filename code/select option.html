@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        select {
+            margin: 50px;
+        }
+        body {
+            background: url(images/chun1.jpg) no-repeat center top;
+        }
+
+    </style>
+</head>
+<body>
+
+<select name="" id="sel">
+    <option value="0">春意盎然</option>
+    <option value="1">夏日炎炎</option>
+    <option value="2">秋风萧瑟</option>
+    <option value="3">冬雪皑皑</option>
+</select>
+
+<script>
+    //需求：更换select的值，然后背景图随着更换。
+            //技术点1：select的value值是option给的。
+            //技术点2：新事件：onchange    改变事件。
+    //步骤：
+    //1.获取事件源和body
+    //2.绑定事件
+    //3.书写事件驱动程序
+        //(1).判断传过来的value值，如果是0，就是春。如果是1，就是夏....
+
+    //1.获取事件源和body
+    var sel = document.getElementById("sel");
+    var bd = document.body;
+
+    //2.绑定事件
+    sel.onchange = function () {
+        //3.书写事件驱动程序
+        //(1).判断传过来的value值，如果是0，就是春。如果是1，就是夏....
+        switch (this.value){
+            case "0":
+                bd.style.backgroundImage = "url(images/chun1.jpg)";
+                break;
+            case "1":
+                bd.style.backgroundImage = "url(images/xia1.jpg)";
+                break;
+            case "2":
+                bd.style.backgroundImage = "url(images/qiu1.jpg)";
+                break;
+            case "3":
+                bd.style.backgroundImage = "url(images/dong1.jpg)";
+        }
+
+    }
+
+</script>
+
+</body>
+</html>

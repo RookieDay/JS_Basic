@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<button>全选</button>
+<button>取消</button>
+<button>反选</button>
+
+<ul>
+    <li><input type="checkbox"/></li>
+    <li><input type="checkbox"/></li>
+    <li><input type="checkbox"/></li>
+    <li><input type="checkbox"/></li>
+    <li><input type="checkbox"/></li>
+    <li><input type="checkbox"/></li>
+    <li><input type="checkbox"/></li>
+    <li><input type="checkbox"/></li>
+    <li><input type="checkbox"/></li>
+    <li><input type="checkbox"/></li>
+</ul>
+
+
+<script>
+    //需求1：点击全选，全部选定
+    //需求2：点击取消，全部取消选定
+    //需求3：点击反选，已经选定的取消，取消的选定
+        //技术点：如何去顶一个input有没有被选定。
+                //看标签中有没有checked.
+             //***在js当中如果标签的checked属性为true那就为选定，为false为没选定。
+    //1.获取事件源和选择input框
+    //2.绑定事件
+    //3.书写事件驱动程序
+        //(1).让checked属性值为true。
+        //(2).让checked属性值为false。
+        //(3).让checked属性值true变false，false变true。
+
+
+
+    //1.获取事件源和选择input框
+    var arrBtn = document.getElementsByTagName("button");
+    var arrinp = document.getElementsByTagName("input");
+
+    fn(0,true);
+    fn(1,false);
+    fn2(2);
+
+    //2.绑定事件
+    function fn(val,flag){
+        arrBtn[val].onclick = function () {
+            //3.书写事件驱动程序
+            //(1).让checked属性值为true。
+            for(var i=0;i<arrinp.length;i++){
+                arrinp[i].checked = flag;
+            }
+        }
+    }
+
+    function fn2(val){
+        arrBtn[val].onclick = function () {
+            for(var i=0;i<arrinp.length;i++){
+                arrinp[i].checked = !arrinp[i].checked;
+            }
+        }
+    }
+
+
+
+
+
+
+    //2.绑定事件
+//    arrBtn[2].onclick = function () {
+//        //3.书写事件驱动程序
+//        //(3).让checked属性值true变false，false变true。
+//        for(var i=0;i<arrinp.length;i++){
+//
+//            //方法1
+////            if(arrinp[i].checked){
+////                arrinp[i].checked = false;
+////            }else{
+////                arrinp[i].checked = true;
+////            }
+//
+//
+//            //方法2
+////            arrinp[i].checked = arrinp[i].checked==true ? false: true;
+////            var aaa = arrinp[i].checked;
+////            aaa == true ? false: true;
+////            arrinp[i].checked = aaa;
+//
+//            //方法3
+//            arrinp[i].checked = !arrinp[i].checked;
+//        }
+//    }
+
+</script>
+
+
+
+
+</body>
+</html>
