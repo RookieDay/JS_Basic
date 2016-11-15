@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+
+    <input type="file" id="inp" />
+
+    <script>
+        //需求：（限制文件上传格式）上传文件的格式如果不是我们约定好的，就给他警告。
+        //技术点(1):我们取最后一个.的后面的所有字符。
+        //技术点(2):后缀名不区分大小写。
+        //步骤：
+        //1.获取事件源
+        //2.绑定事件
+        //3.书写事件驱动程序
+        //(0).对后缀名进行处理。（让他忽略大小写）
+        //(1).如果你上传的文件的后缀名为。。。。那么alert(上传成功！);
+        //(2).否则，alert(上传失败！);
+
+        //1.获取事件源
+        var inp = document.getElementById("inp");
+        //2.绑定事件
+        inp.onchange = function() {
+            //3.书写事件驱动程序
+            //(0).对后缀名进行处理。（让他忽略大小写）
+            var aaa = inp.value.lastIndexOf(".");
+            var bbb = inp.value.slice(aaa);
+            var ccc = bbb.toUpperCase();
+            //(1).如果你上传的文件的后缀名为。。。。那么alert(上传成功！);
+            if (ccc == ".JPG" || ccc == ".PNG" || ccc == ".GIF") {
+                alert("恭喜您,上传成功！");
+                return;
+            }
+            //(2).否则，alert(上传失败！);
+            alert("对不起,上传失败！");
+        }
+    </script>
+
+
+
+</body>
+
+</html>

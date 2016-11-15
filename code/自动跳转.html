@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 900px;
+            margin: 200px;
+            color: red;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="box" id="box">
+    </div>
+
+
+    <script>
+        //需求：5秒钟后页面跳转到传智官网。
+        //技术点1：我们必须用setTimeout.
+        //技术点2：window.location.href = 页面跳转.
+        //步骤：
+        //1.定义一个定时器。
+        //2.判断，5秒钟内，不停调用这个方法。
+        //3.超过5秒钟，跳转到传智官网
+
+        var box = document.getElementById("box");
+        var num = 5;
+        fn();
+
+        function fn() {
+            //1.定义一个定时器。
+            if (num > -1) {
+                //2.判断，5秒钟内，不停调用这个方法。
+                box.innerHTML = num + "秒钟后页面将会跳转到官网！<a href='http://www.baidu.cn'>立即前往！</a>";
+                num--;
+                // alert(arguments.callee);
+                // alert(fn);
+                setTimeout(arguments.callee, 1000);
+            } else {
+                //3.超过5秒钟，跳转到官网
+                window.location.href = "http://www.baidu.cn";
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

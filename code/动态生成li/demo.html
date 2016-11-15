@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul,
+        ol {
+            list-style: none;
+        }
+        
+        .box {
+            width: 730px;
+            height: 454px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .circle {
+            position: absolute;
+            left: 50%;
+            margin-left: -50px;
+            bottom: 10px;
+        }
+        
+        .circle span {
+            float: left;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: pink;
+            text-align: center;
+            line-height: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        img {
+            display: none;
+        }
+        
+        .current {
+            display: block!important;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var slide = document.getElementById("slide");
+            var circle = document.getElementById("circle");
+            var arrPic = document.getElementsByTagName("img");
+            var ul = slide.children[1];
+            for (var i = 0; i < arrPic.length; i++) {
+                var span = document.createElement("span");
+                ul.appendChild(span);
+                span.innerHTML = i + 1;
+                // console.log(i)
+            }
+
+            var arrSpan = circle.children;
+            for (var j = 0; j < arrSpan.length; j++) {
+                arrSpan[j].index = j;
+                arrSpan[j].onmouseover = function() {
+                    for (var h = 0; h < arrPic.length; h++) {
+                        arrPic[h].className = "";
+                    }
+                    arrPic[this.index].className = "current";
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="box" id="slide">
+        <div class="slider">
+            <ul>
+                <li><img src="images/11.jpg" alt="" /></li>
+                <li><img src="images/22.jpg" alt="" class="current" /></li>
+                <li><img src="images/33.jpg" alt="" /></li>
+                <li><img src="images/44.jpg" alt="" /></li>
+                <li><img src="images/55.jpg" alt="" /></li>
+                <li><img src="images/66.jpg" alt="" /></li>
+            </ul>
+        </div>
+        <div class="circle" id="circle">
+
+        </div>
+    </div>
+</body>
+
+</html>

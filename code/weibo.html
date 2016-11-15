@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        width: 500px;
+        border: 1px solid pink;
+        padding: 10px;
+        margin: 50px auto;
+    }
+    
+    textarea {
+        width: 345px;
+        height: 330px;
+        resize: none;
+    }
+    
+    ul {
+        list-style: none;
+        width: 345px;
+    }
+    
+    li {
+        height: 30px;
+        border-bottom: 1px dashed #ccc;
+        margin-left: 30px;
+        line-height: 30px;
+        padding-left: 5px;
+    }
+    
+    li a {
+        float: right;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <label for="txt">pls input</label>
+        <textarea name="a" id="txt" cols="30" rows="10"></textarea>
+        <button id="btn">Click</button>
+        <ul id="ul">
+
+        </ul>
+    </div>
+    <script>
+        var btn = document.getElementById("btn");
+        var ul = document.getElementById("ul");
+        var txt = document.getElementById("txt");
+
+        btn.onclick = function() {
+           
+            if (txt.value == "") {
+                alert("haha null");
+                return;
+            }
+            var newLi = document.createElement("li");
+            newLi.innerHTML = txt.value + "<a href='javascript:;'>delete</a>"
+            if (ul.children.length == 0) {
+                ul.appendChild(newLi);
+            } else {
+                ul.insertBefore(newLi, ul.firstChild);
+            }
+            txt.value = "";
+
+            var ulArr = ul.getElementsByTagName("a");
+            for (var i = 0; i < ulArr.length; i++) {
+                ulArr[i].onclick = function() {
+                    ul.removeChild(this.parentNode);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
